@@ -43,4 +43,4 @@ jobs:
       # run tests
       - run: cd selenium-tests && npm run theiaCommon -- --baseUrl ${TEST_URL}
       - store_test_results:
-          path: selenium-tests/test-results
+          path: ~/repo/selenium-tests/test_results
