@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - ghpr/post-pr-comment:
-          comment: Hello
+          comment: ${GITHUB_TOKEN}
           when: always
       # - setup_remote_docker:
       #     version: 19.03.13
