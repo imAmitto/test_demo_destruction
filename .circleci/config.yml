@@ -39,6 +39,7 @@ jobs:
             sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
             rm google-chrome.deb
       - run: cd selenium-tests && npm install
+      - run: sleep 2m
       # run tests
       - run: cd selenium-tests && npm run theiaCommon -- --baseUrl ${TEST_URL}
       - store_test_results:
