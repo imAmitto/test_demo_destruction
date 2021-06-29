@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   pulumi: pulumi/pulumi@2.0.0
-  pr-comment: benjlevesque/pr-comment@0.1.9
+  ghpr: narrativescience/ghpr@1.1.1
 
 jobs:
   build:
@@ -10,8 +10,9 @@ jobs:
     working_directory: ~/repo/
     steps:
       - checkout
-      - pr-comment: 
+      - ghpr/post-pr-comment:
           comment: Hello
+          when: always
       # - setup_remote_docker:
       #     version: 19.03.13
       # - pulumi/login
