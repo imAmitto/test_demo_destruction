@@ -1,0 +1,4 @@
+{
+  "loadingDiv": "//div[@class='theia-preload']",
+  "theiaShell": "div#theia-app-shell"
+}

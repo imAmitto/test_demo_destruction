@@ -1,0 +1,5 @@
+{
+  "submitButton": ".btn.btn-primary",
+  "toastMessage": "//div[@class='Toastify']//div[@role='alert']",
+  "toastCloseButton": "//div[@class='Toastify']//button"
+}
