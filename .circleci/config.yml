@@ -10,9 +10,6 @@ jobs:
     working_directory: ~/repo/
     steps:
       - checkout
-      - ghpr/post-pr-comment:
-          comment: ${GITHUB_TOKEN}
-          when: always
       # - setup_remote_docker:
       #     version: 19.03.13
       # - pulumi/login
@@ -29,9 +26,17 @@ jobs:
       #     stack: 'proxor-theia/test-pr_${CIRCLE_BUILD_NUM}'
       #     property_name: demoUrl
       #     env_var: TEST_URL
-      # - run:
-      #     name: Demo URL
-      #     command: echo ${TEST_URL}
-      # - run:
-      #     name: Run tests
-      #     command: sd
+      # - ghpr/post-pr-comment:
+      #     comment: ${TEST_URL}
+      #     when: always
+      - run:
+          name: Install Chrome latest version
+          command: |
+            sudo apt-get install lsb-release libappindicator3-1
+            curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo dpkg -i google-chrome.deb
+            sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
+            rm google-chrome.deb
+      - run: cd selenium-tests && npm install
+      # run tests
+      - run: cd selenium-tests && npm run theiaCommon -- --baseUrl http://15.207.254.212:4000
