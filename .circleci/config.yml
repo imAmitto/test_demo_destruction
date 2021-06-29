@@ -42,4 +42,4 @@ jobs:
       # run tests
       - run: cd selenium-tests && npm run theiaCommon -- --baseUrl http://15.207.254.212:4000
       - store_test_results:
-          path: ./test-results
+          path: selenium-tests/test-results
