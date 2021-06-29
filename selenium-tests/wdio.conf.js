@@ -96,7 +96,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://15.207.254.212:4000',
+    // baseUrl: 'http://15.207.254.212:4000',
     //
     // Default timeout for all waitFor* commands.
     // ...
@@ -126,12 +126,15 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
     // reporters: ['dot'],
-    reporters: ['spec'],
-    reporterOptions: {
-      allure: {
-        outputDir: 'allure-results',
-      },
-    },
+    reporters: [
+        'spec',
+        ['junit', {
+          outputDir: './test-results/',
+          outputFileFormat: function(opts) {
+            return `results_myproduct.xml`;
+          }
+        }]
+      ],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

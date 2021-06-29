@@ -26,7 +26,7 @@ const theiaJavaExamTaskDef = new awsx.ecs.FargateTaskDefinition("hello-world", {
     },
     family: "theiaJava",
     cpu: "256",
-    memory: "512"
+    memory: "512",
 });
 
 // Step 4: Create a Fargate service task that can scale out.
